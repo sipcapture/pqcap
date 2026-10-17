@@ -4,6 +4,9 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
 
+echo "==> Workflow permissions contract"
+bash tests/workflows/check_workflow_permissions.sh
+
 echo "==> DuckDB metadata contract"
 mkdir -p .tmp/testdata
 duckdb -unsigned < tests/duckdb/pqcap_metadata_contract.sql
